@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -40,6 +41,12 @@ public class CustomerControllerTest {
     public void testGetCustomerBySurname() throws Exception {
         when(customerRepository.findBySurname("Smith")).thenReturn(bobSmith);
         assertEquals(bobSmith, customerController.getCustomerBySurname("Smith"));
+    }
+
+    @Test
+    public void testGetCustomerBySurnameDoesntExist() throws Exception {
+        when(customerRepository.findBySurname("Jones")).thenReturn(null);
+        assertNull(customerController.getCustomerBySurname("Smith"));
     }
 
 }
