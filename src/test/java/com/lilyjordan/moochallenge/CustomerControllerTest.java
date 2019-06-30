@@ -1,5 +1,6 @@
-package com.lilyjordan.moochallenge.controller;
+package com.lilyjordan.moochallenge;
 
+import com.lilyjordan.moochallenge.controller.CustomerController;
 import com.lilyjordan.moochallenge.entity.Customer;
 import com.lilyjordan.moochallenge.repository.CustomerRepository;
 import org.junit.Before;
@@ -19,23 +20,26 @@ public class CustomerControllerTest {
     private CustomerRepository customerRepository;
 
     private CustomerController customerController;
+    private Customer bobSmith;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
         customerController = new CustomerController(customerRepository);
-    }
 
-    @Test
-    public void testGetCustomerBySurname() throws Exception {
-        Customer bobSmith = new Customer();
+        bobSmith = new Customer();
+        bobSmith.setId(1L);
         bobSmith.setFirstName("Bob");
         bobSmith.setSurname("Smith");
         bobSmith.setPhoneNumber("+447123456789");
         bobSmith.setEmailAddress("bob@bobsmith.com");
         bobSmith.setPostalAddress("5 Drury Lane");
+    }
 
+    @Test
+    public void testGetCustomerBySurname() throws Exception {
         when(customerRepository.findBySurname("Smith")).thenReturn(bobSmith);
         assertEquals(bobSmith, customerController.getCustomerBySurname("Smith"));
     }
+
 }
