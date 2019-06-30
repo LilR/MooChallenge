@@ -2,7 +2,7 @@ package com.lilyjordan.moochallenge.entity;
 
 /**
  * Created by Lily on 30/06/2019.
- */
+ **/
 
 
 import javax.persistence.*;
@@ -13,22 +13,22 @@ public class Customer {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(name = "First_Name", length = 32, nullable = false)
+    @Column(name = "FIRSTNAME", length = 32, nullable = false)
     private String firstName;
 
-    @Column(name = "Surname", length = 32, nullable = false)
+    @Column(name = "SURNAME", length = 32, nullable = false)
     private String surname;
 
-    @Column(name = "Phone_Number", length = 32, nullable = false)
+    @Column(name = "PHONENUMBER", length = 32, nullable = false)
     private String phoneNumber;
 
-    @Column(name = "Email_Address", length = 64, nullable = false)
+    @Column(name = "EMAILADDRESS", length = 64, nullable = false)
     private String emailAddress;
 
-    @Column(name = "PostalAddress", length = 256, nullable = false)
+    @Column(name = "POSTALADDRESS", length = 256, nullable = false)
     private String postalAddress;
 
     public Long getId() {
@@ -77,5 +77,17 @@ public class Customer {
 
     public void setPostalAddress(String postalAddress) {
         this.postalAddress = postalAddress;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", postalAddress='" + postalAddress + '\'' +
+                '}';
     }
 }
